@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Reorganization Showcase</title>
+    <!-- Outfit Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131a2e;
+            --bg-tertiary: #1b2542;
+            --accent-primary: #6366f1;
+            --accent-secondary: #06b6d4;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --glass-bg: rgba(19, 26, 46, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.03);
+            --shadow-premium: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        header {
+            padding: 4rem 2rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-badge {
+            background: var(--accent-gradient);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .hash-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-premium);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background-image: linear-gradient(180deg, var(--glass-highlight), transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hash-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-gradient);
+        }
+
+        .hash-info h3 {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hash-value {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.25rem;
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.1);
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
+            border: 1px solid rgba(52, 211, 153, 0.2);
+            word-break: break-all;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-copy {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-copy:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-premium);
+            height: fit-content;
+        }
+
+        .category-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .category-item {
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .category-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-main);
+            transform: translateX(4px);
+        }
+
+        .category-item.active {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .category-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        .explorer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .explorer-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-premium);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .file-item-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-item-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        .file-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent-secondary);
+        }
+
+        .file-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            word-break: break-all;
+            margin-bottom: 0.25rem;
+        }
+
+        .file-size {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .file-details-modal {
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+
+        .code-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .code-container {
+            position: relative;
+            margin-top: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-header {
+            background: var(--bg-tertiary);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        pre {
+            background: #080c14;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #e5e7eb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 5rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(11, 15, 25, 0.4);
+            color: var(--text-muted);
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .email-link {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .email-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #10b981;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Detail display styling */
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .preview-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .preview-content {
+            font-family: 'Fira Code', monospace;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-size: 0.85rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="header-badge">Verification Dashboard</span>
+        <h1>CMS Reorganization</h1>
+        <p class="subtitle">An automated pipeline that refactors flat/nested structures into clean, category-based organizations.</p>
+    </header>
+
+    <main>
+        <!-- Verification Hash -->
+        <section class="hash-card">
+            <div class="hash-info">
+                <h3>Verification Hash (SHA-256)</h3>
+                <div class="hash-value" id="hash-text">3a803fdd979c3ec8941a5e5eb7f889d6ac6661c8b7413472c70a52bc52004203</div>
+            </div>
+            <button class="btn-copy" onclick="copyHash()">
+                <i class="fa-regular fa-copy"></i> Copy Hash
+            </button>
+        </section>
+
+        <!-- Live File Explorer Dashboard -->
+        <section>
+            <div class="section-title">
+                <i class="fa-solid fa-folder-tree"></i>
+                <h2>Interactive File Explorer</h2>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Sidebar (Categories) -->
+                <div class="sidebar-card">
+                    <ul class="category-list" id="category-list-ul">
+                        <!-- Categories will be injected here -->
+                    </ul>
+                </div>
+
+                <!-- Explorer Main -->
+                <div class="explorer-container">
+                    <div class="explorer-card">
+                        <div class="files-grid" id="files-grid-div">
+                            <!-- Files will be injected here -->
+                        </div>
+                        
+                        <!-- File Preview Modal/Details -->
+                        <div class="file-details-modal" id="preview-section" style="display: none;">
+                            <div class="preview-header">
+                                <span class="preview-title" id="preview-filename">Select a file to preview</span>
+                                <span class="file-size" id="preview-filesize"></span>
+                            </div>
+                            <div class="preview-content" id="preview-body"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reorganization Script -->
+        <section class="code-section">
+            <div class="section-title">
+                <i class="fa-solid fa-terminal"></i>
+                <h2>The Reorganization Script</h2>
+            </div>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">This Bash script extracts the target category from each document's first line, normalizes relative paths, places them in corresponding directories, and generates the verification signature.</p>
+            <div class="code-container">
+                <div class="code-header">
+                    <span>reorganize.sh</span>
+                    <button class="btn-copy" onclick="copyScript()">
+                        <i class="fa-regular fa-copy"></i> Copy Script
+                    </button>
+                </div>
+                <pre><code id="script-code"># script content here</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">CMS Refactoring Portfolio</div>
+        <p style="margin-bottom: 0.5rem;">Created as part of the Content Management System Refactoring Challenge.</p>
+        <p>Contact Developer: <!--email_off-->23f3001617@ds.study.iitm.ac.in<!--/email_off--></p>
+    </footer>
+
+    <div class="toast" id="toast-el">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <script>
+        // Data injected from Python generator
+        const fileData = [{"category": "archives", "filename": "project-file07.txt", "content": "category: archives\n\nCONTENT FILES - File 7\n\nThis is a test file for the reorganization exercise.\nPath: project/file07.txt\nCategory: archives\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 266}, {"category": "caf\u00e9", "filename": "docs-chapter1-donn\u00e9es-spaces here-file02.txt", "content": "category: caf\u00e9\n\nCONTENT FILES - File 2\n\nThis is a test file for the reorganization exercise.\nPath: docs/chapter1/donn\u00e9es/spaces here/file02.txt\nCategory: caf\u00e9\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 287}, {"category": "caf\u00e9", "filename": "docs-m\u00f3dulo-3-donn\u00e9es-file24.txt", "content": "category: caf\u00e9\n\nCONTENT FILES - File 24\n\nThis is a test file for the reorganization exercise.\nPath: docs/m\u00f3dulo-3/donn\u00e9es/file24.txt\nCategory: caf\u00e9\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 277}, {"category": "configs", "filename": "archive-section-a-appendix-file06.txt", "content": "category: configs\n\nCONTENT FILES - File 6\n\nThis is a test file for the reorganization exercise.\nPath: archive/section-a/appendix/file06.txt\nCategory: configs\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 283}, {"category": "data", "filename": "archive-2024-file16.txt", "content": "category: data\n\nCONTENT FILES - File 16\n\nThis is a test file for the reorganization exercise.\nPath: archive/2024/file16.txt\nCategory: data\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 264}, {"category": "documentation", "filename": "content-chapter1-file19.txt", "content": "category: documentation\n\nCONTENT FILES - File 19\n\nThis is a test file for the reorganization exercise.\nPath: content/chapter1/file19.txt\nCategory: documentation\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 286}, {"category": "documentation", "filename": "project-file22.txt", "content": "category: documentation\n\nCONTENT FILES - File 22\n\nThis is a test file for the reorganization exercise.\nPath: project/file22.txt\nCategory: documentation\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 277}, {"category": "documentation", "filename": "project-file29.txt", "content": "category: documentation\n\nCONTENT FILES - File 29\n\nThis is a test file for the reorganization exercise.\nPath: project/file29.txt\nCategory: documentation\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 277}, {"category": "m\u00fcnchen", "filename": "content-file08.txt", "content": "category: m\u00fcnchen\n\nCONTENT FILES - File 8\n\nThis is a test file for the reorganization exercise.\nPath: content/file08.txt\nCategory: m\u00fcnchen\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 266}, {"category": "m\u00fcnchen", "filename": "docs-section-a-r\u00e9f\u00e9rences-file28.txt", "content": "category: m\u00fcnchen\n\nCONTENT FILES - File 28\n\nThis is a test file for the reorganization exercise.\nPath: docs/section-a/r\u00e9f\u00e9rences/file28.txt\nCategory: m\u00fcnchen\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 287}, {"category": "na\u00efve-bayes", "filename": "archive-2024-file18.txt", "content": "category: na\u00efve-bayes\n\nCONTENT FILES - File 18\n\nThis is a test file for the reorganization exercise.\nPath: archive/2024/file18.txt\nCategory: na\u00efve-bayes\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 280}, {"category": "na\u00efve-bayes", "filename": "content-m\u00f3dulo-3-donn\u00e9es-caf\u00e9-2024-f\u0456le04.txt", "content": "category: na\u00efve-bayes\n\nCONTENT FILES - File 4\n\nThis is a test file for the reorganization exercise.\nPath: content/m\u00f3dulo-3/donn\u00e9es/caf\u00e9-2024/f\u0456le04.txt\nCategory: na\u00efve-bayes\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 305}, {"category": "na\u00efve-bayes", "filename": "project-spaces here-f\u0456le13.txt", "content": "category: na\u00efve-bayes\n\nCONTENT FILES - File 13\n\nThis is a test file for the reorganization exercise.\nPath: project/spaces here/f\u0456le13.txt\nCategory: na\u00efve-bayes\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 288}, {"category": "notes", "filename": "content-2024-appendix-file15.txt", "content": "category: notes\n\nCONTENT FILES - File 15\n\nThis is a test file for the reorganization exercise.\nPath: content/2024/appendix/file15.txt\nCategory: notes\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 275}, {"category": "notes", "filename": "content-file21.txt", "content": "category: notes\n\nCONTENT FILES - File 21\n\nThis is a test file for the reorganization exercise.\nPath: content/file21.txt\nCategory: notes\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 261}, {"category": "notes", "filename": "project-chapter1-file26.txt", "content": "category: notes\n\nCONTENT FILES - File 26\n\nThis is a test file for the reorganization exercise.\nPath: project/chapter1/file26.txt\nCategory: notes\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 270}, {"category": "reports", "filename": "content-caf\u00e9-2024-file10.txt", "content": "category: reports\n\nCONTENT FILES - File 10\n\nThis is a test file for the reorganization exercise.\nPath: content/caf\u00e9-2024/file10.txt\nCategory: reports\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 276}, {"category": "reports", "filename": "project-caf\u00e9-2024-file11.txt", "content": "category: reports\n\nCONTENT FILES - File 11\n\nThis is a test file for the reorganization exercise.\nPath: project/caf\u00e9-2024/file11.txt\nCategory: reports\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 276}, {"category": "resources", "filename": "content-2024-appendix-na\u00efve-file01.txt", "content": "category: resources\n\nCONTENT FILES - File 1\n\nThis is a test file for the reorganization exercise.\nPath: content/2024/appendix/na\u00efve/file01.txt\nCategory: resources\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 289}, {"category": "resources", "filename": "content-chapter1-test_file-file20.txt", "content": "category: resources\n\nCONTENT FILES - File 20\n\nThis is a test file for the reorganization exercise.\nPath: content/chapter1/test_file/file20.txt\nCategory: resources\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 288}, {"category": "r\u00e9sum\u00e9", "filename": "archive-file23.txt", "content": "category: r\u00e9sum\u00e9\n\nCONTENT FILES - File 23\n\nThis is a test file for the reorganization exercise.\nPath: archive/file23.txt\nCategory: r\u00e9sum\u00e9\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 267}, {"category": "r\u00e9sum\u00e9", "filename": "docs-file03.txt", "content": "category: r\u00e9sum\u00e9\n\nCONTENT FILES - File 3\n\nThis is a test file for the reorganization exercise.\nPath: docs/file03.txt\nCategory: r\u00e9sum\u00e9\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 263}, {"category": "r\u00e9sum\u00e9", "filename": "docs-m\u00f3dulo-3-r\u00e9f\u00e9rences-file12.txt", "content": "category: r\u00e9sum\u00e9\n\nCONTENT FILES - File 12\n\nThis is a test file for the reorganization exercise.\nPath: docs/m\u00f3dulo-3/r\u00e9f\u00e9rences/file12.txt\nCategory: r\u00e9sum\u00e9\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 287}, {"category": "r\u00e9sum\u00e9", "filename": "project-2024-appendix-f\u0456le30.txt", "content": "category: r\u00e9sum\u00e9\n\nCONTENT FILES - File 30\n\nThis is a test file for the reorganization exercise.\nPath: project/2024/appendix/f\u0456le30.txt\nCategory: r\u00e9sum\u00e9\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 282}, {"category": "r\u00e9sum\u00e9", "filename": "project-file-name-file14.txt", "content": "category: r\u00e9sum\u00e9\n\nCONTENT FILES - File 14\n\nThis is a test file for the reorganization exercise.\nPath: project/file-name/file14.txt\nCategory: r\u00e9sum\u00e9\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 277}, {"category": "scripts", "filename": "docs-2024-f\u0456le09.txt", "content": "category: scripts\n\nCONTENT FILES - File 9\n\nThis is a test file for the reorganization exercise.\nPath: docs/2024/f\u0456le09.txt\nCategory: scripts\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 267}, {"category": "scripts", "filename": "docs-part 2-intro-spaces here-file05.txt", "content": "category: scripts\n\nCONTENT FILES - File 5\n\nThis is a test file for the reorganization exercise.\nPath: docs/part 2/intro/spaces here/file05.txt\nCategory: scripts\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 286}, {"category": "templates", "filename": "content-chapter1-file27.txt", "content": "category: templates\n\nCONTENT FILES - File 27\n\nThis is a test file for the reorganization exercise.\nPath: content/chapter1/file27.txt\nCategory: templates\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 278}, {"category": "templates", "filename": "docs-file25.txt", "content": "category: templates\n\nCONTENT FILES - File 25\n\nThis is a test file for the reorganization exercise.\nPath: docs/file25.txt\nCategory: templates\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 266}, {"category": "\u65e5\u672c\u8a9e", "filename": "archive-caf\u00e9-2024-file17.txt", "content": "category: \u65e5\u672c\u8a9e\n\nCONTENT FILES - File 17\n\nThis is a test file for the reorganization exercise.\nPath: archive/caf\u00e9-2024/file17.txt\nCategory: \u65e5\u672c\u8a9e\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n", "size": 280}];
+        const scriptCodeContent = "#!/bin/bash\n\n# Clean up any existing category directories and previous extractions to ensure a clean run\nrm -rf archives caf\u00e9 configs data documentation m\u00fcnchen na\u00efve-bayes notes reports resources r\u00e9sum\u00e9 scripts templates \u65e5\u672c\u8a9e docs project\n\n# Step 1: Extract the ZIP file\n# The zip file is located at ../files_to_reorganize.zip\nunzip -o ../files_to_reorganize.zip\n\n# Step 2: Move and rename files based on category\n# We use find with -print0 and read -d '' to properly handle spaces and special characters in paths\nfind . -type f -name \"*.txt\" -print0 | while IFS= read -r -d '' file; do\n  # Extract category from the first line starting with \"category:\"\n  # We use tr -d '\\r' to strip Windows line endings\n  category=$(grep -m 1 \"^category:\" \"$file\" | cut -d' ' -f2- | tr -d '\\r')\n  \n  if [ -n \"$category\" ]; then\n    # Create directory for the category if it doesn't exist\n    mkdir -p \"$category\"\n    \n    # Get relative path (removing leading ./)\n    relpath=\"${file#./}\"\n    \n    # Convert slashes to dashes\n    newname=$(echo \"$relpath\" | tr '/' '-')\n    \n    # Move the file\n    mv \"$file\" \"$category/$newname\"\n  fi\ndone\n\n# Step 3: Clean up empty directories\nfind . -type d -empty -delete\n\n# Step 4: Generate and display hash\n# Run this hash command on the clean directory (excluding reorganize.sh)\necho \"Reorganization complete.\"\n";
+
+        document.getElementById('script-code').textContent = scriptCodeContent;
+
+        // Group files by category
+        const categories = {};
+        fileData.forEach(item => {
+            if (!categories[item.category]) {
+                categories[item.category] = [];
+            }
+            categories[item.category].push(item);
+        });
+
+        // Initialize sidebar
+        const catUl = document.getElementById('category-list-ul');
+        const sortedCats = Object.keys(categories).sort();
+        
+        sortedCats.forEach((cat, index) => {
+            const li = document.createElement('li');
+            li.className = 'category-item' + (index === 0 ? ' active' : '');
+            li.setAttribute('data-category', cat);
+            li.innerHTML = `
+                <span><i class="fa-regular fa-folder-open" style="margin-right: 8px;"></i> ${cat}</span>
+                <span class="category-count">${categories[cat].length}</span>
+            `;
+            li.onclick = () => selectCategory(cat, li);
+            catUl.appendChild(li);
+        });
+
+        // Select initial category
+        if (sortedCats.length > 0) {
+            renderFiles(sortedCats[0]);
+        }
+
+        function selectCategory(cat, element) {
+            document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            renderFiles(cat);
+            document.getElementById('preview-section').style.display = 'none';
+        }
+
+        function renderFiles(category) {
+            const grid = document.getElementById('files-grid-div');
+            grid.innerHTML = '';
+            
+            categories[category].forEach(file => {
+                const card = document.createElement('div');
+                card.className = 'file-item-card';
+                card.innerHTML = `
+                    <div class="file-icon"><i class="fa-regular fa-file-lines"></i></div>
+                    <div class="file-name">${file.filename}</div>
+                    <div class="file-size">${(file.size / 1024).toFixed(2)} KB</div>
+                `;
+                card.onclick = () => showPreview(file);
+                grid.appendChild(card);
+            });
+        }
+
+        function showPreview(file) {
+            document.getElementById('preview-section').style.display = 'block';
+            document.getElementById('preview-filename').textContent = file.filename;
+            document.getElementById('preview-filesize').textContent = (file.size / 1024).toFixed(2) + " KB";
+            document.getElementById('preview-body').textContent = file.content;
+        }
+
+        function copyHash() {
+            const hash = document.getElementById('hash-text').textContent;
+            navigator.clipboard.writeText(hash).then(() => {
+                showToast("Verification hash copied!");
+            });
+        }
+
+        function copyScript() {
+            navigator.clipboard.writeText(scriptCodeContent).then(() => {
+                showToast("Shell script copied!");
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast-el');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
